@@ -73,7 +73,9 @@ def setup_spacepy():
     # %% verify
     print("verifying SpacePy CDF read")
 
-    subprocess.check_call([sys.executable, str(Path(__file__).parent / "test_pycdf_read.py")])
+    subprocess.check_call(
+        [sys.executable, str(Path(__file__).parent / "test_pycdf_read.py")]
+    )
 
 
 if __name__ == "__main__":

@@ -1,3 +1,5 @@
+[![Build Status](https://dev.azure.com/mhirsch0512/spacepy-installer/_apis/build/status/scivision.spacepy-installer?branchName=master)](https://dev.azure.com/mhirsch0512/spacepy-installer/_build/latest?definitionId=7&branchName=master)
+
 # SpacePy install script
 
 SpacePy
@@ -15,6 +17,7 @@ downloads, compiles and installs NASA CDF library on Linux or MacOS using:
 
 * Python &ge; 3.6
 * C compiler
+* Fortran complier (for FFnet)
 * GNU Make
 
 and then installs SpacePy and verifies SpacePy can read a CDF file.
