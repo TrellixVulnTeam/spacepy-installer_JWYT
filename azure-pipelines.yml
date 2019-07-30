@@ -24,16 +24,16 @@ jobs:
     displayName: 'Install SpacePy and Test CDF Read'
 
 
-- job: MacOS_CMake
-  pool:
-    vmImage: macOS-latest
+# - job: MacOS_CMake
+  # pool:
+    # vmImage: macOS-latest
 
-  steps:
-  - task: UsePythonVersion@0
-    inputs:
-      versionSpec: '3.6'
-      addToPath: true
-  - script: brew install gcc
-    displayName: install compilers
-  - script: python setup_spacepy.py
-    displayName: 'Install SpacePy and Test CDF Read'
+  # steps:
+  # - task: UsePythonVersion@0
+    # inputs:
+      # versionSpec: '3.6'
+      # addToPath: true
+  # - script: brew install gcc
+    # displayName: install compilers
+  # - script: python setup_spacepy.py
+    # displayName: 'Install SpacePy and Test CDF Read'

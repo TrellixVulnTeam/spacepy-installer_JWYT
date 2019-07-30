@@ -52,11 +52,12 @@ def setup_spacepy():
         f.extractall(R)
     # %% build
     if sys.platform == "linux":
-        cmd = "OS=linux ENV=gnu CURSES=yes FORTRAN=no UCOPTIONS=-O2 SHARED=yes -j -l4 all".split(
+        cmd = "OS=linux ENV=gnu CURSES=no FORTRAN=no UCOPTIONS=-O2 SHARED=yes -j -l4 all".split(
             " "
         )
     elif sys.platform == "darwin":
-        cmd = "OS=macosx ENV=gnu CURSES=yes FORTRAN=no UCOPTIONS=-O2 SHARED=yes -j -l4 all".split(
+        print('CDF Makefiles are obsolete and no longer work with current OSX versions. Suggest CDFlib instead.', file=sys.stderr)
+        cmd = "OS=macosx ENV=gnu CURSES=no FORTRAN=no UCOPTIONS=-O2 SHARED=yes -j -l4 all".split(
             " "
         )
     else:
