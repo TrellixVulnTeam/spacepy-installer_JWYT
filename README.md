@@ -1,4 +1,4 @@
-[![Build Status](https://dev.azure.com/mhirsch0512/spacepy-installer/_apis/build/status/scivision.spacepy-installer?branchName=master)](https://dev.azure.com/mhirsch0512/spacepy-installer/_build/latest?definitionId=7&branchName=master)
+[![Actions Status](https://github.com/scivision/spacepy-installer/workflows/ci/badge.svg)](https://github.com/scivision/spacepy-installer/actions)
 
 # SpacePy install script
 
