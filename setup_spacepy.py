@@ -27,7 +27,7 @@ def url_retrieve(url: str, outfile: Path, overwrite: bool = False):
     if overwrite or not outfile.is_file():
         outfile.parent.mkdir(parents=True, exist_ok=True)
 
-        urllib.request.urlretrieve(url, str(outfile))
+        urllib.request.urlretrieve(url, outfile)
 
 
 def setup_spacepy():
@@ -53,7 +53,7 @@ def setup_spacepy():
         f.extractall(R)
     # %% build
     if sys.platform == "linux":
-        cmd = "OS=linux ENV=gnu CURSES=no FORTRAN=no UCOPTIONS=-O2 SHARED=yes -j -l4 all".split(
+        cmd = "OS=linux ENV=gnu CURSES=no FORTRAN=no UCOPTIONS=-O2 SHARED=yes -j all".split(
             " "
         )
     elif sys.platform == "darwin":
@@ -61,11 +61,11 @@ def setup_spacepy():
             "CDF Makefiles are obsolete and no longer work with current OSX versions. Suggest CDFlib instead.",
             file=sys.stderr,
         )
-        cmd = "OS=macosx ENV=gnu CURSES=no FORTRAN=no UCOPTIONS=-O2 SHARED=yes -j -l4 all".split(
+        cmd = "OS=macosx ENV=gnu CURSES=no FORTRAN=no UCOPTIONS=-O2 SHARED=yes -j all".split(
             " "
         )
     else:
-        raise SystemExit(f"I dont know how to install SpacePy on {sys.platform}")
+        raise RuntimeError(f"I dont know how to install SpacePy on {sys.platform}")
 
     cwd = list(R.glob("cdf*dist"))[0].resolve()
     print(f"\nbuilding CDF in {cwd}\n")
