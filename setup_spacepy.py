@@ -74,7 +74,9 @@ def setup_spacepy():
     subprocess.check_call(build_cmd)
     subprocess.check_call([make, "-C", str(cwd), "--silent", "install"])  # no sudo
     # %% install spacepy
-    subprocess.check_call([sys.executable, "-m", "pip", "install", "numpy", "spacepy"])
+    # numpy must be installed separately, as spacepy/setup.py isn't handling this as usual
+    subprocess.check_call([sys.executable, "-m", "pip", "install", "numpy"])
+    subprocess.check_call([sys.executable, "-m", "pip", "install", "spacepy"])
     # %% verify
     print("verifying SpacePy CDF read")
 
