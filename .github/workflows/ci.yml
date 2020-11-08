@@ -1,23 +1,24 @@
 name: ci
 
-on: [push, pull_request]
+on:
+  push:
+    paths:
+      - "**.py"
 
 jobs:
 
   linux:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v1
-    - uses: actions/setup-python@v1
+    - uses: actions/checkout@v2
+    - uses: actions/setup-python@v2
       with:
-        python-version: 3.6
-    - name: Install packages
-      run: sudo apt install -yq --no-install-recommends gfortran
-    - name: Install test dependencies
-      run: pip install flake8 mypy
-    - name: Lint
-      run: flake8
-    - name: Type check
-      run: mypy .
+        python-version: '3.x'
+
+    - run: pip install flake8 mypy
+
+    - run: flake8
+    - run: mypy
+
     - name: install spacepy
       run: python setup_spacepy.py

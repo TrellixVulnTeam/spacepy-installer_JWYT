@@ -1,4 +1,5 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
+
 import urllib.request
 import tarfile
 from pathlib import Path
@@ -6,16 +7,6 @@ import sys
 import shutil
 import os
 import subprocess
-
-if sys.version_info < (3, 6):
-    raise SystemExit("Python >= 3.6 required")
-
-if os.name == "nt":
-    raise SystemExit("Windows can use the PyPi wheel: \n pip install spacepy")
-
-make = shutil.which("make")
-if not make:
-    raise SystemExit("GNU Make not found.")
 
 
 def url_retrieve(url: str, outfile: Path, overwrite: bool = False):
@@ -40,6 +31,16 @@ def url_retrieve(url: str, outfile: Path, overwrite: bool = False):
 
 
 def setup_spacepy():
+    if sys.version_info < (3, 6):
+        raise RuntimeError("Python >= 3.6 required")
+
+    if os.name == "nt":
+        raise RuntimeError("Windows can use the PyPi wheel: \n pip install spacepy")
+
+    make = shutil.which("make")
+    if not make:
+        raise RuntimeError("GNU Make not found.")
+
     R = Path("~").expanduser()
     # %% download libcdf
     url = "https://spdf.sci.gsfc.nasa.gov/pub/software/cdf/dist/latest-release/cdf-dist-all.tar.gz"
@@ -56,7 +57,10 @@ def setup_spacepy():
             " "
         )
     elif sys.platform == "darwin":
-        print('CDF Makefiles are obsolete and no longer work with current OSX versions. Suggest CDFlib instead.', file=sys.stderr)
+        print(
+            "CDF Makefiles are obsolete and no longer work with current OSX versions. Suggest CDFlib instead.",
+            file=sys.stderr,
+        )
         cmd = "OS=macosx ENV=gnu CURSES=no FORTRAN=no UCOPTIONS=-O2 SHARED=yes -j -l4 all".split(
             " "
         )
