@@ -43,7 +43,7 @@ def setup_spacepy():
 
     R = Path("~").expanduser()
     # %% download libcdf
-    url = "https://spdf.sci.gsfc.nasa.gov/pub/software/cdf/dist/latest-release/cdf-dist-all.tar.gz"
+    url = "https://spdf.gsfc.nasa.gov/pub/software/cdf/dist/cdf38_0/cdf38_0-dist-all.tar.gz"
 
     ofn = R / url.split("/")[-1]
 
